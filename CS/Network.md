@@ -1,6 +1,6 @@
 # 네트워크 - 면접대비
 
-### OSI 7계층에 대해 설명할 수 있나요❓
+### OSI 7계층에 대해 설명할 수 있나요?
 ![7](https://user-images.githubusercontent.com/44339530/114519390-55d70f00-9c7b-11eb-8290-87fbc8bac1d3.png)<br>
 
 - 1 계층(물리 계층)
@@ -47,7 +47,7 @@
     - 프로토콜: DNS, FTP, HTTP
 - 출처: https://quro07.tistory.com/4
 
-### HTTP와 HTTPS의 차이에 대해 설명할 수 있나요❓
+### HTTP와 HTTPS의 차이에 대해 설명할 수 있나요?
 ![8](https://user-images.githubusercontent.com/44339530/114519995-eca3cb80-9c7b-11eb-8de3-c844ebe80c6d.png)<br>
 - HTTP는 평문 데이터를 전송하는 프로토콜이기 때문에, HTTP로 비밀번호나 주민번호 등을 주고 받으면 제3자에 의해 조회될 수 있습니다. 이러한 문제를 해결하기 위해 HTTP에 암호화가 추가된 프로토콜이 HTTPS입니다. HTTPS는 CA로 부터 자신의 공개키를 갖는 인증서를 발급하여 보내는 메시지를 공개키로 암호화하도록 하고 있습니다. 공개키로 암호화된 데이터는 개인키로만 복호화가 가능하기에 제3자가 원본 데이터를 조회 할 수 없게 됩니다.
 
