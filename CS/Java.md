@@ -32,7 +32,7 @@
 - Map
     - 순서 없이 Key, Value형태로 데이터를 저장
     - Value는 중복을 허용하지만 Key는 중복을 허용하지 않음
-    - Key는 중복을 허용하지 않음
+    - Key는 null을 허용하지 않음
 
 ### Java의 Vector와 ArrayList 차이는 무엇인가요?
 - Vector
