@@ -8,17 +8,19 @@
     - JVM위에서 동작하기 때문에 실행 속도가 상대적으로 느림
     - 다중 상속이나 타입에 엄격하는 등 제약이 많음
 
-### 추상 클래스와 인터페이스의 차이는 무엇인가요?
-- 추상 클래스
-    - 단일 상속만 가능
-    - 모든 접근 제어자를 사용 가능
-    - 변수와 상수를 선언할 수 있음
-    - 추상 메소드와 일반 메소드를 선언 가능
-- 인터페이스
-    - 다중 구현이 가능
-    - public 접근 제어자만 사용 가능
-    - 상수만 선언 가능
-    - 추상메소드만 선언 가능
+### 추상 클래스와 인터페이스의 공통점 및 차이점은 무엇인가요?
+- 공통점
+    - 인스턴스화 할 수 없다.(객체 생성 불가능)
+    - 자식 클래스가 무언가 반드시 구현하도록 위임할 때 사용한다.
+- 차이점
+|추상 클래스|인터페이스|
+|----------|---------------|
+|다중 상속 불가능|다중 상속 가능|
+|접근제어자 모두 사용 가능|public만 사용 가능|
+|모두 선언 가능|상수만 선언 가능|
+|추상메소드와 일반 메소드를 모두 선언가능|추상메소드만 선언가능|
+|상속을 받아서 기능을 확장시키기 위한 목적(부모 유전자를 물려받는 목적)|구현하는 클래스에 대해 특정 메소드가 존재하도록 강제하는 목적(부모 유전자를 물려받는 것이 아닌 사교적으로 필요에 따라 결합하기 위한 목적)|
+- 출처: https://cbw1030.tistory.com/47
 
 ### List, Set, Map에 대해 설명해주세요.
 - List
@@ -115,7 +117,7 @@
     - Young 영역: 새롭게 생성한 객체들이 위치하는 영역
     - Old영역: Young 영역에서 계속 사용되어 살아남은 객체가 복사되는 영역, Young영역보다 더 크게 할당되며 더 적은 GC가 발생한다.
 
-- Young 영역은 1개의 Eden 영역과 2개의 Survivor 영역으로 구서오디는데, Young 영역에 대한 GC는 다음과 같이 동작합니다.
+- Young 영역은 1개의 Eden 영역과 2개의 Survivor 영역으로 구성되는데, Young 영역에 대한 GC는 다음과 같이 동작합니다.
     - 1) 새로운 객체가 Eden 영역에 생성됨
     - 2) Eden 영역에 GC가 동작하고, 그 중에서 살아남은 객체가 Survivor0으로 이동함
     - 3) 2번의 동작이 반복되어 Survivor0이 꽉 차게 됨
@@ -131,7 +133,7 @@
 
 - 2) Parallel GC: <b>Serial GC와 동일하게 mark-sweep-compact알고리즘을 사용하지만 멀티 스레드 방식을 적용</b>하여 GC를 처리한다.
 
-- 3) Parrel Old GC: mark-sweep-compact 알고리즘의 sweep대신 summary를 사용한다. summary단계는 앞서 GC를 수행한 영역에 대해 별도로 살아있는 객체를 식별하며 Sweep보다 조금 더 복잡하다.
+- 3) Parallel Old GC: mark-sweep-compact 알고리즘의 sweep대신 summary를 사용한다. summary단계는 앞서 GC를 수행한 영역에 대해 별도로 살아있는 객체를 식별하며 Sweep보다 조금 더 복잡하다.
 
 - 4) Concurrent Mark & Sweep GC(CMS): Initial Mark 단계에서는 살아 있는 객체를 찾는 것으로 끝낸다.(Stop-the-World 시간이 짧음) 그리고 찾은 객체에서 참조하는 개체를 Concurrent하게(여러 스레드가 동시에) 따라가는 Concurrent Mark 단계가 수행된다. 그 이후에 Stop-the-World가 실행되고 Concurrent하게 Remark가 동작한다. 이 방식은 애플리케이션의 응답속도가 매우 중요할 때 사용한다.<br>
 ![3](https://user-images.githubusercontent.com/44339530/114511149-7d75a980-9c72-11eb-9be3-c3ccee7faf84.png)<br>
@@ -140,11 +142,29 @@
 ![4](https://user-images.githubusercontent.com/44339530/114511151-7ea6d680-9c72-11eb-9fcd-bac70c1ca90e.png)<br>
 
 
-## call by value와 call by reference와 차이는 무엇인가요?
+### call by value와 call by reference의 차이는 무엇인가요?
 - 두 가지의 차이는 특정 메서드를 호출할 때 파라미터를 넘겨주는 방식에 있습니다.
 - call by value는 값에 의한 호출로 메서드를 호출할 때 메모리 상에 값을 복사하여 전달하는 방식입니다.
 - call by reference는 참조에 의한 호출로 메서드를 호출할 때 인자로 전달되는 변수의 레퍼런스를 전달하는 방식입니다.
 - Java는 call by value형식으로 특정 메서드를 호출하면 값을 복사하게 됩니다. 하지만 참조형 타입은 실제 인스턴스에 대한 레퍼런스가 메모리상에 저장되있기에 실제 인스턴스를 넘겨주는 것과 동일하다.
+
+### 클래스간의 다중 상속 및 interface간의 다중상속이 가능한가요?
+- 클래스 간의 다중 상속은 불가능하지만 interface간의 다중상속은 가능합니다.
+- 만약 A클래스를 상속받은 B,C클래스를 상속받은 D클래스가 있으며 A클래스의 메소드A를 B,C 두 클래스에서 각각 오버라이딩했다고 가졍했을 때 D의 인스턴스가 메소드A를 호출하면 B의 A메소드를 호출해야될지 C의 A메소드를 호출해야될지 애매모호하기 떄문에 자바에서는 클래스간의 다중 상속을 지원하지 않는다. (다이아몬드 문제)
+- 자바8의 default메소드 또한 위와 같은 문제로 인해 다중 상속이 불가능하다.
+- 하지만 인터페이스는 메소드를 선언만 하기에 B든 C든 어떠한 메소드를 호출해도 문제가 없기에 다중 상속이 가능하다.
+- 출처: https://siyoon210.tistory.com/125
+
+### Java의 Generic Type에 대해 설명할 수 있나요?
+- 일반적인 코드를 작성하고, 이 코드를 다양한 타입의 객체에 대해 재사용하는 프로그래밍 기법이다.
+- 클래스에서 사용할 타입을 클래스 외부에서 설정하는 타입
+- Java 1.5부터 추가되었으며 주로 java Collection에서 많이 사용된다.
+- 출처: https://namjackson.tistory.com/18
+
+### Java의 upcasting과 downcasting의 공통점 및 차이점은 무엇인가요?
+- upcasting과 downcasting 모두 자바 인스턴스의 형변환과 관련이 있다.
+- upcasting은 부모 레퍼런스 변수로 자식 클래스를 참조하는 것을 말하며 downcasting은 upcasting된 부모 클래스가 다시 본래의 자식클래스로 돌아오는 것을 말한다. downcasting시에는 명시적으로 타입을 선언해줘야 한다.
+- 출처: https://madplay.github.io/post/java-upcasting-and-downcasting
 
 #### 출처
 - https://gmlwjd9405.github.io/2018/09/17/class-object-instance.html
