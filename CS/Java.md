@@ -165,6 +165,11 @@
 - upcasting은 부모 레퍼런스 변수로 자식 클래스를 참조하는 것을 말하며 downcasting은 upcasting된 부모 클래스가 다시 본래의 자식클래스로 돌아오는 것을 말한다. downcasting시에는 명시적으로 타입을 선언해줘야 한다.
 - 출처: https://madplay.github.io/post/java-upcasting-and-downcasting
 
+### Java에서 ==와 equals의 차이점은 무엇인가요?
+- equals는 레퍼런스가 가리키고 있는 값들의 내용이 같은지 비교
+- ==는 레퍼런스의 주소값이 같은지 비교
+
+
 #### 출처
 - https://gmlwjd9405.github.io/2018/09/17/class-object-instance.html
 - https://mangkyu.tistory.com/94
